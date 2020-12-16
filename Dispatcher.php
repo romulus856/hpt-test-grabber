@@ -52,6 +52,8 @@ class Dispatcher
 
         foreach ($productIds as $productId) {
             $this->getOutput()->setProductPrice($productId, $this->getGrabber()->getPrice($productId));
+            $this->getOutput()->setProductName($productId, $this->getGrabber()->getName($productId));
+            $this->getOutput()->setProductScore($productId, $this->getGrabber()->getScore($productId));
         }
 
         return $this->getOutput()->getJson();

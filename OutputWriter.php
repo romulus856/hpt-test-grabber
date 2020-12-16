@@ -7,6 +7,8 @@ namespace HPT\Test\Grabber;
 class OutputWriter implements \IOutput
 {
     const PRODUCT_PRICE_KEY = 'price';
+    const PRODUCT_NAME_KEY = 'name';
+    const PRODUCT_SCORE_KEY = 'score';
 
     /** @var array */
     private $productsData = array();
@@ -34,5 +36,15 @@ class OutputWriter implements \IOutput
     public function getJson()
     {
         return json_encode($this->getProductsData());
+    }
+
+    public function setProductName(string $productId, ?string $name): void
+    {
+        $this->productsData[$productId][self::PRODUCT_NAME_KEY] = $name;
+    }
+
+    public function setProductScore(string $productId, ?int $score): void
+    {
+        $this->productsData[$productId][self::PRODUCT_SCORE_KEY] = $score;
     }
 }
